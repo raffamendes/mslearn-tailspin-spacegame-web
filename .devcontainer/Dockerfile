@@ -32,7 +32,8 @@ ARG AGENT_VERSION="2.206.1"
 RUN cd /home/vscode/azure-pipelines \
     && curl -O -L https://vstsagentpackage.azureedge.net/agent/${AGENT_VERSION}/vsts-agent-linux-${ARCH}-${AGENT_VERSION}.tar.gz 
 RUN tar xzf /home/vscode/azure-pipelines/vsts-agent-linux-${ARCH}-${AGENT_VERSION}.tar.gz 
-RUN bash chmod +x /home/vscode/azure-pipelines/bin/installdependencies.sh
+#RUN bash chmod +x /home/vscode/azure-pipelines/bin/installdependencies.sh
+SHELL ["/bin/bash", "-c"]
 RUN /home/vscode/azure-pipelines/bin/installdependencies.sh
 
 # copy over the start.sh script
